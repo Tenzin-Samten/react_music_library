@@ -16,14 +16,13 @@ function App() {
     if(search) {
    const fetchData = async () => {
     const URL = encodeURI(API_URL + search)
-    console.log(URL)
     const response = await fetch (URL) 
     const data = await response.json() 
-    console.log(data)
-   if (data.results.length > 0) {
+    if (data.results.length > 0) {
     setData(data.results)
   } else {
     setMessage('Not Found')
+    setData([])
   }
    } 
 
@@ -35,10 +34,8 @@ function App() {
     e.preventDefault()
     setSearch(term)
   }
-
   return (
     <div>
-      
       {message}
       <Router>
         <Routes>
